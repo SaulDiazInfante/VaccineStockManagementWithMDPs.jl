@@ -1,5 +1,5 @@
+# SPDX-License-Identifier: MIT
 module VaccineStockManagementWithMDPs
-
-# Write your package code here.
-
+export greet_vaccine_stock_management_with_mdps
+include("functions.jl")
 end
