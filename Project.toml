@@ -1,19 +1,10 @@
 name = "VaccineStockManagementWithMDPs"
-<<<<<<< HEAD
-uuid = "e868d39b-b7fc-49d7-b2dd-8b93448f9037"
-authors = ["Saul Diaz-Infante Veklasco", "Yofre Hernan Garcia Gomez"]
-version = "1.0.0-DEV"
-
-[compat]
-julia = "1"
-=======
 uuid = "79623142-2e53-48ef-8aea-8a7ce4a6be3b"
 authors = ["Saul Diaz Infante", "Yofre Hernan Garcia"]
 version = "1.0.0-DEV"
 
 [compat]
 julia = "1.7"
->>>>>>> 122f4285b0532fb3ef9dc9d55118f6b0a626e46e
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
