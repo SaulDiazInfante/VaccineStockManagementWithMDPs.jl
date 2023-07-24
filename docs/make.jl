@@ -1,0 +1,2 @@
+using Documenter, VaccineStockManagementWithMDPs
+makedocs(sitename="VaccineStockManagementWithMDPs.jl")
