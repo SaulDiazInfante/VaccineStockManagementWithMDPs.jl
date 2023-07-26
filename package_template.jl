@@ -14,3 +14,4 @@ t = Template(;
 )
 
 generate("VaccineStockManagementWithMDPs",t)
+DocumenterTools.generate("VaccineStockManagementWithMDPs/docs")
