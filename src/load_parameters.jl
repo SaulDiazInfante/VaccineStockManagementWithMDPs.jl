@@ -1,6 +1,10 @@
 """
-Load parameters for the ODE mode and simulation.
-See table for a detailed description
+    load_parameters(json_file_name()
+
+    Return a DataFrame with all parameters to
+    run the MDP 
+    Load parameters for the ODE mode and simulation.
+    See table for a detailed description
 # Arguments
 - `json_file_name::String`: Path with a .json file of parameters
 
