@@ -1,5 +1,5 @@
 """
-    load_parameters(json_file_name()
+    load_parameters(json_file_name="../data/parameters_model.json")
 
     Return a DataFrame with all parameters to
     run the MDP 
