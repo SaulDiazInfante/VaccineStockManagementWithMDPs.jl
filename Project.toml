@@ -1,3 +1,7 @@
+using Pkg
+Pkg.build() # Pkg.build(; verbose = true) for Julia 1.1 and up
+Pkg.test(coverage=true)
+
 name = "VaccineStockManagementWithMDPs"
 uuid = "79623142-2e53-48ef-8aea-8a7ce4a6be3b"
 authors = ["Saul Diaz Infante", "Yofre Hernan Garcia"]

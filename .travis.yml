@@ -7,6 +7,7 @@ branches:
   only:
     - master
 coveralls: true
+codecov: true
 notifications:
   email: false
 jobs:
