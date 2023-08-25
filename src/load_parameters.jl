@@ -1,10 +1,5 @@
 """
-<<<<<<< HEAD
-...
-    load_parameters(json_file_name()
-=======
     load_parameters(json_file_name="../data/parameters_model.json")
->>>>>>> 2fb52a9a8263ae79e5720dea46bc965322e2703b
 
     Return a DataFrame with all parameters to
     run the MDP.
