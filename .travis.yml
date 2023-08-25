@@ -1,0 +1,22 @@
+languaje: julia
+os: 
+  - linux
+julia:
+  - 1.9
+branches:
+  only:
+    - master
+coveralls: true
+codecov: true
+notifications:
+  email: false
+jobs:
+  include:
+    - stage: "Documentation"
+      julia: 1.9
+      os: linux
+      script:
+        - julia --project=docs/ -e 'using Pkg; Pkg.instantiate();
+        Pkg.develop(PakageSpec(path=pwd()))'
+        - julia --project=docs/ docs/make.jl
+      after_success: skip

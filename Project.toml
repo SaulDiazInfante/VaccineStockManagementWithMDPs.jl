@@ -1,3 +1,7 @@
+using Pkg
+Pkg.build() # Pkg.build(; verbose = true) for Julia 1.1 and up
+Pkg.test(coverage=true)
+
 name = "VaccineStockManagementWithMDPs"
 uuid = "79623142-2e53-48ef-8aea-8a7ce4a6be3b"
 authors = ["Saul Diaz Infante", "Yofre Hernan Garcia"]
@@ -17,6 +21,7 @@ ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [compat]
+JSON = "0.21"
 julia = "1.9"
 
 [extras]
