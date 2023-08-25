@@ -1,3 +1,6 @@
+```@meta
+    CurrentModule = VaccineStockManagementWithMDPs
+```
 # VaccineStockManagementWithMDPs.jl
 Julia code for the simulation of a Vaccine Stock plugged to a SEIRVD 
 structure and a sequeital set of decisions.
@@ -5,8 +8,7 @@ structure and a sequeital set of decisions.
 # load_parameters.jl
 
 ```@docs
-load_parameters()
-
+load_parameters(json_file_)
 ```
 
 # References
@@ -21,6 +23,3 @@ load_parameters()
 
 5. "Learning Julia: Build high-performance applications for scientific computing" by Anshul Joshi and Rahul Lakhanpal: This book provides an introduction to Julia for scientific computing and covers topics such as data manipulation, visualization, and parallel computing.
 
-6. "Julia for Data Science" by Zacharias Voulgaris: This book focuses on using
-Julia for data science tasks, including data manipulation, visualization, and
-machine learning.
