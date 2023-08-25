@@ -1,4 +1,5 @@
 """
+...
     load_parameters(json_file_name()
 
     Return a DataFrame with all parameters to
@@ -7,7 +8,7 @@
     See table for a detailed description
 # Arguments
 - `json_file_name::String`: Path with a .json file of parameters
-
+...
 """
 function load_parameters(json_file_name="../data/parameters_model.json")
     file_JSON = open(json_file_name, "r")
