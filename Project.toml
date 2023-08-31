@@ -3,6 +3,10 @@ uuid = "7af0daf1-17b2-4e47-89bf-9f112c439da5"
 authors = ["Saul Diaz-Infante Veklasco", "Yofre Hernan Garcia Gomez"]
 version = "1.0.0-DEV"
 
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+
 [compat]
 julia = "1"
 
