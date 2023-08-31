@@ -5,11 +5,13 @@ using PkgTemplates
 
 t = Template(;
     user="SaulDiazInfante",
+    license = "MIT",
     authors=["Saul Diaz-Infante Veklasco", "Yofre Hernan Garcia Gomez"],
     plugins=[
+        Travis(),
+        Codecov(),
+        Coveralls(),
         License(name="MIT"),
-        Git(),
-        GitHubActions(),
     ]
 )
 
