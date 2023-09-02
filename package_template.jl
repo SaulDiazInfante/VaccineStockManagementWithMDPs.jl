@@ -6,7 +6,7 @@ using PkgTemplates
 t = Template(;
     user="SaulDiazInfante",
     license = "MIT",
-    authors=["Saul Diaz-Infante Veklasco", "Yofre Hernan Garcia Gomez"],
+    authors=["Saul Diaz Infante Velasco", "Yofre Hernan Garcia Gomez"],
     plugins=[
         Travis(),
         Codecov(),
