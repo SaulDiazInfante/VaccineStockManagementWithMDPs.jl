@@ -1,0 +1,13 @@
+name = "VaccineStockManagementWithMDPs"
+uuid = "dcf08db0-6f44-4dc5-80e9-a688641cf96d"
+authors = ["Saul Diaz Infante Velasco", "Yofre Hernan Garcia Gomez"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
