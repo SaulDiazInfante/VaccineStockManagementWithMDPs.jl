@@ -4,9 +4,8 @@
     Return a DataFrame with all parameters to
     run the MDP.
 
-    This function also load parameters for the ODE model and 
-    simulation setup.
-    See table for a detailed description in the article.
+      In addition, this function is responsible for loading the
+    parameters required for the ODE model and simulation configuration.
 
 # Arguments
 - `json_file_name::String`: Path with a .json file of parameters
