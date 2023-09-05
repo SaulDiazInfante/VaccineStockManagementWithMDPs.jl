@@ -11,6 +11,11 @@ structure and a sequeital set of decisions.
 load_parameters(json_file_)
 ```
 
+# get_stencil_projection.jl
+
+```@docs
+get_stencil_projection(t, parameters)
+```
 # References
 
 1. "Julia Programming for Operations Research" by Changhyun Kwon and Youngdae Cho: This book focuses on using Julia for solving optimization problems and is suitable for readers with a background in operations research or mathematical optimization.
