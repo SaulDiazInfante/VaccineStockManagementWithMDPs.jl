@@ -10,8 +10,10 @@ module VaccineStockManagementWithMDPs
     using JSON, DataFrames
     export greet_vaccine_stock_management_with_mdps
     export load_parameters
-    export rhs_evaluation
+    export get_stencil_projection
+    export rhs_evaluation!
     include("functions.jl")
     include("load_parameters.jl")
+    include("get_stencil_projection.jl")
     include("rhs_evaluation.jl")
 end
