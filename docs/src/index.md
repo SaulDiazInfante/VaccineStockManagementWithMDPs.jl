@@ -8,7 +8,7 @@ structure and a sequeital set of decisions.
 # load_parameters.jl
 
 ```@docs
-load_parameters(json_file_)
+load_parameters(json_file_name="../data/parameters_model.json")
 ```
 
 # get_stencil_projection.jl
@@ -16,6 +16,13 @@ load_parameters(json_file_)
 ```@docs
 get_stencil_projection(t, parameters)
 ```
+
+# rhs_evaluation.jl
+
+```@docs
+rhs_evaluation!(t, x, a_t, k, parameters)
+```
+
 # References
 
 1. "Julia Programming for Operations Research" by Changhyun Kwon and Youngdae Cho: This book focuses on using Julia for solving optimization problems and is suitable for readers with a background in operations research or mathematical optimization.
