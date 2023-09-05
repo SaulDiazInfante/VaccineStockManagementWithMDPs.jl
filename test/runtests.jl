@@ -20,7 +20,7 @@ using DataFrames
         X_vac = p.X_vac_interval[1],
         K_stock = p.k_stock[1]
     )
-    x_new= VaccineStockManagementWithMDPs.rhs_evaluation(t, x_df, a_t, k, p)
+    x_new= VaccineStockManagementWithMDPs.rhs_evaluation!(t, x_df, a_t, k, p)
     @test VaccineStockManagementWithMDPs.load_parameters().N_grid_size[1] == 500
     @test VaccineStockManagementWithMDPs.get_stencil_projection(t, p) == 2 
     @test sum(x_new[1:7]) == 1.0
