@@ -1,10 +1,16 @@
 """
         rhs_evaluation!(t, x, a_t, k, parameters)
 
-        Approximate the solution to SEIRVDX_vac ODE by
-        returning an array with the right-hand side 
-        evaluation of The Non-Standard recurrence; refer
-        to the corresponding article for formulation.
+        Approximate the solution to SEIRVDX_vac ODE by returning an        array with the right-hand side evaluation of The Non-Standard        recurrence; refer to the corresponding article for formulation.
+
+# Arguments
+- `t::Float`: time 
+- `x::DataFrame`: System current state
+- `a_t::Float`: action, that is a proportion of the total jabs projected
+  that would be administrated.
+- `k::Float`: current level of the vaccine-stock.
+- `parameters::DataFrame`: current parameters.
+...
 """
 function rhs_evaluation!(t, x, a_t, k, parameters)
     x_new = zeros(11)

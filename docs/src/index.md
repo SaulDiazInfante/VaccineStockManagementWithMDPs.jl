@@ -1,7 +1,8 @@
+# VaccineStockManagementWithMDPs.jl
 ```@meta
     CurrentModule = VaccineStockManagementWithMDPs
 ```
-# VaccineStockManagementWithMDPs.jl
+
 Julia code for the simulation of a Vaccine Stock plugged to a SEIRVD 
 structure and a sequeital set of decisions.
 
@@ -11,18 +12,31 @@ structure and a sequeital set of decisions.
 load_parameters(json_file_name="../data/parameters_model.json")
 ```
 
-# get_stencil_projection.jl
-
-```@docs
-get_stencil_projection(t, parameters)
-```
-
 # rhs_evaluation.jl
 
 ```@docs
 rhs_evaluation!(t, x, a_t, k, parameters)
 ```
 
+# get_stencil_projection.jl
+```@docs
+get_stencil_projection(t, parameters)
+```
+This function is implemten by computing
+
+```math
+\begin{aligned}
+    \eta(t): = \sup
+        \{
+            i: t_i \leq t
+    \}
+\end{aligned}
+```
+
+# get_stochastic_perturbation.jl
+```@docs
+ get_stochastic_perturbation(json_file_name="parameters_model.json")
+```
 # References
 
 1. "Julia Programming for Operations Research" by Changhyun Kwon and Youngdae Cho: This book focuses on using Julia for solving optimization problems and is suitable for readers with a background in operations research or mathematical optimization.
