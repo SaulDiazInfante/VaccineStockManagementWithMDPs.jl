@@ -37,6 +37,8 @@ This function is implemten by computing
 ```@docs
  get_stochastic_perturbation(json_file_name="parameters_model.json")
 ```
+
+
 # References
 
 1. "Julia Programming for Operations Research" by Changhyun Kwon and Youngdae Cho: This book focuses on using Julia for solving optimization problems and is suitable for readers with a background in operations research or mathematical optimization.

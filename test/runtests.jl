@@ -6,6 +6,7 @@ using DataFrames
     @test VaccineStockManagementWithMDPs.greet_vaccine_stock_management_with_mdps() == "Hello VaccineStockManagementWithMDPs!"
     @test VaccineStockManagementWithMDPs.greet_vaccine_stock_management_with_mdps() != "Hellow World!"
     p = VaccineStockManagementWithMDPs.load_parameters()
+    p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation()
     t = 90
     a_t = 0.25
     k = .0015
@@ -24,4 +25,5 @@ using DataFrames
     @test VaccineStockManagementWithMDPs.load_parameters().N_grid_size[1] == 500
     @test VaccineStockManagementWithMDPs.get_stencil_projection(t, p) == 2 
     @test sum(x_new[1:7]) == 1.0
+    @test p.t_delivery[2] != p_sto.t_delivery[2]
 end

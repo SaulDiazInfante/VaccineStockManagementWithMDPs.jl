@@ -1,14 +1,17 @@
 """
-    get_stochastic_perturbation(json_file_name="parameters_model.json")
+    get_stochastic_perturbation(
+    json_file_name="../data/parameters_model.json"
+    )
 
 Returns a random perturabation of the delivery plan enclosed in the json
 file. To do this, the function loads the parameters as the dataframe
 `par` and then sum to the deliveries times and stock shimpments a random
 variable.
+
 ---
 """
 function get_stochastic_perturbation(
-    json_file_name="parameters_model.json"
+    json_file_name="../data/parameters_model.json"
     )
     par = load_parameters(json_file_name);
     t_delivery = par.t_delivery;
