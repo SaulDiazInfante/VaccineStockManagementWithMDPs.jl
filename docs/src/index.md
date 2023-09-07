@@ -1,4 +1,4 @@
-# VaccineStockManagementWithMDPs.jl
+# `VaccineStockManagementWithMDPs.jl`
 ```@meta
     CurrentModule = VaccineStockManagementWithMDPs
 ```
@@ -6,19 +6,15 @@
 Julia code for the simulation of a Vaccine Stock plugged to a SEIRVD 
 structure and a sequeital set of decisions.
 
-# load_parameters.jl
+# `load_parameters.jl`
 
 ```@docs
 load_parameters(json_file_name="../data/parameters_model.json")
 ```
 
-# rhs_evaluation.jl
 
-```@docs
-rhs_evaluation!(t, x, a_t, k, parameters)
-```
 
-# get_stencil_projection.jl
+# `get_stencil_projection.jl`
 ```@docs
 get_stencil_projection(t, parameters)
 ```
@@ -33,11 +29,23 @@ This function is implemten by computing
 \end{aligned}
 ```
 
-# get_stochastic_perturbation.jl
+# `get_stochastic_perturbation.jl`
 ```@docs
  get_stochastic_perturbation(json_file_name="parameters_model.json")
 ```
 
+# `get_solution_path.jl`
+
+## `get_vaccine_stock_coverage.jl`
+
+## `get_vaccine_action.jl`
+
+## `get_interval_solution`
+
+### `rhs_evaluation.jl`
+```@docs
+rhs_evaluation!(t, x, a_t, k, parameters)
+```
 
 # References
 

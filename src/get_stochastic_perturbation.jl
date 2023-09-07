@@ -1,7 +1,5 @@
 """
-    get_stochastic_perturbation(
-    json_file_name="../data/parameters_model.json"
-    )
+    get_stochastic_perturbation(json_file_name="../data/parameters_model.json")
 
 Returns a random perturabation of the delivery plan enclosed in the json
 file. To do this, the function loads the parameters as the dataframe
