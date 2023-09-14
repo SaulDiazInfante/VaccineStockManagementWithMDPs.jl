@@ -4,7 +4,6 @@ using DataFrames
 
 @testset "VaccineStockManagementWithMDPs.jl" begin
     @test VaccineStockManagementWithMDPs.greet_vaccine_stock_management_with_mdps() == "Hello VaccineStockManagementWithMDPs!"
-    @test VaccineStockManagementWithMDPs.greet_vaccine_stock_management_with_mdps() != "Hellow World!"
     p = VaccineStockManagementWithMDPs.load_parameters()
     p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation()
     t = 90
@@ -21,7 +20,7 @@ using DataFrames
         X_vac = p.X_vac_interval[1],
         K_stock = p.k_stock[1]
     )
-    x_new= VaccineStockManagementWithMDPs.rhs_evaluation!(t, x_df, a_t, k, p)
+    x_new = VaccineStockManagementWithMDPs.rhs_evaluation!(t, x_df, a_t, k, p)
     @test VaccineStockManagementWithMDPs.load_parameters().N_grid_size[1] == 500
     @test VaccineStockManagementWithMDPs.get_stencil_projection(t, p) == 2 
     @test sum(x_new[1:7]) == 1.0
