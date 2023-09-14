@@ -13,9 +13,11 @@ module VaccineStockManagementWithMDPs
     export get_stencil_projection
     export rhs_evaluation!
     export get_stochastic_perturbation
+    export compute_cost
     include("functions.jl")
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
     include("rhs_evaluation.jl")
     include("get_stochastic_perturbation.jl")
+    include("compute_cost.jl")
 end
