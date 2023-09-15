@@ -12,8 +12,6 @@ structure and a sequeital set of decisions.
 load_parameters(json_file_name="../data/parameters_model.json")
 ```
 
-
-
 # `get_stencil_projection.jl`
 ```@docs
 get_stencil_projection(t, parameters)
@@ -25,13 +23,65 @@ This function is implemten by computing
     \eta(t): = \sup
         \{
             i: t_i \leq t
-    \}
+    \}, \quad i \in \{1,2 , \dots, M \}
 \end{aligned}
 ```
+where the index $i$ runs over the projected 
+delivery times $t_i$.
 
 # `get_stochastic_perturbation.jl`
 ```@docs
- get_stochastic_perturbation(json_file_name="parameters_model.json")
+get_stochastic_perturbation(json_file_name="parameters_model.json")
+```
+# `rhs_evaluation.jl`
+```@docs
+rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
+```
+## `compute_cost(x, parameters)`
+```@docs
+```
+This function compute the cost of the actual state using the
+current action $a_t$. The cost is the sum of the conributions regaring
+to the burden of a diseases quantifyed in DALYs and the implicated cost,
+related with the vaccination campaing.
+
+According to the definition of DALY we compute this indicator with
+```math
+    \begin{aligned}
+        DALY 
+            &:= 
+                YLL + YLD
+        \\
+        YLL(t_{k + 1}) 
+            &:=
+                \int_{t_k}^{t_{k + 1}}
+                    m_1  (D(t) - D(t_k))
+                dt
+        \\
+        YLD(t_{k + 1})
+            &:= 
+                \int_{t_k}^{t_{k + 1}}
+                    m_2 (I_S(t) - I_S(t_k))
+                dt.
+        \\
+    \end{aligned}
+```
+Then we estimate the cost due to the vaccine stock management and
+deploy of the underlying vaccination campaing by
+
+```math
+    \begin{aligned}
+        C_{stock} (t_{k + 1})
+            &:=
+                \int_{t_k}^{t_{k + 1}}
+                    C(K_t)
+                dt
+        \\
+        C_{campaing}(t_{k + 1})
+            &:=
+                \int_{t_k}^{t_{k + 1}}
+                    m_4 (X_{vac}(t) - X_{vac}(t_{k}))
+    \end{aligned}
 ```
 
 # `get_solution_path.jl`
@@ -42,10 +92,6 @@ This function is implemten by computing
 
 ## `get_interval_solution`
 
-### `rhs_evaluation.jl`
-```@docs
-rhs_evaluation!(t, x, a_t, k, parameters)
-```
 
 # References
 
@@ -59,3 +105,4 @@ rhs_evaluation!(t, x, a_t, k, parameters)
 
 5. "Learning Julia: Build high-performance applications for scientific computing" by Anshul Joshi and Rahul Lakhanpal: This book provides an introduction to Julia for scientific computing and covers topics such as data manipulation, visualization, and parallel computing.
 
+6. WHO, A. (2020). WHO methods and data sources for life tables 1990–2019.

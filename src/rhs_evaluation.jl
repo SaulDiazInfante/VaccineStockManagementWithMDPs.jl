@@ -1,7 +1,9 @@
 """
         rhs_evaluation!(t, x, a_t, k, parameters)
 
-        Approximate the solution to SEIRVDX_vac ODE by returning an        array with the right-hand side evaluation of The Non-Standard        recurrence; refer to the corresponding article for formulation.
+Approximate the solution to SEIRVDX_vac ODE by returning an array with
+the right-hand side evaluation of The Non-Standard recurrence; refer to
+the corresponding article for formulation.
 
 # Arguments
 - `t::Float`: time 
@@ -12,7 +14,6 @@
 - `parameters::DataFrame`: current parameters.
 ...
 """
-include("compute_cost.jl")
 function rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
         #TODO: Check dimesions with other scripts
         x_new = zeros(14)

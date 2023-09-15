@@ -1,11 +1,9 @@
 """
     load_parameters(json_file_name="../data/parameters_model.json")
 
-    Returns a DataFrame with all parameters to
-    run the MDP.
-
-      In addition, this function is responsible for loading the
-    parameters required for the ODE model and simulation configuration.
+Returns a DataFrame with all parameters to run the MDP.
+In addition, this function is responsible for loading the  parameters
+required for the ODE model and simulation configuration.
 ---
 # Arguments
 - `json_file_name::String`: Path of a .json file with parameters.

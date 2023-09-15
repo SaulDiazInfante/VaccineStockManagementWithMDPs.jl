@@ -1,15 +1,17 @@
 """
     compute_cost(x, parameters)
 
-Returns the funcional cost with a implicit dependence
-of the control a_t and the current state x.
- 
-# Arguments
-- `x::DataFrame`: current state of the MDP
-- `parameters::DataFrame`: Data Frame loaded with 
-    `load_parameters(...)` function 
+Compute the functional cost given the current 
+state and action.
 
-    ---
+# Arguments
+- `t::Float`: time 
+- `x::DataFrame`: System current state
+- `a_t::Float`: action, that is a proportion of the total jabs projected
+  that would be administrated.
+- `k::Float`: current level of the vaccine-stock.
+- `parameters::DataFrame`: current parameters.
+...
 """
 function compute_cost(x, parameters)
     m_yll = parameters.yll_weight[1]
@@ -31,7 +33,7 @@ function compute_cost(x, parameters)
     k_0 = parameters.k_stock[1] / parameters.N[1]
     # #    "psi_v": 0.00123969,
     CL0 = sum([S_0, E_0, I_S_0, I_A_0, R_0, D_0, V_0])
-        omega_v = parameters.omega_v[1]
+    omega_v = parameters.omega_v[1]
     #a_t = 0.0
     p = parameters.p[1]
     alpha_a = parameters.alpha_a[1]
@@ -43,14 +45,17 @@ function compute_cost(x, parameters)
     epsilon = parameters.epsilon[1]
     beta_s = parameters.beta_s[1]
     beta_a = parameters.beta_a[1]
-    header_strs = ["time", "S", "E",
+    header_strs = [
+        "t", "S", "E",
         "I_S", "I_A", "R",
         "D", "V", "CL",
-        "X_vac", "X_0_mayer","K_stock", "action"
+        "X_vac", "X_0_mayer","K_stock", 
+        "action", "opt_policy"
     ]
     x_0= [
         0.0, S_0, E_0, I_S_0, I_A_0, R_0, 
-        D_0, V_0, CL0, X_vac_0, X_0_mayer_0, k_0, 0.0
+        D_0, V_0, CL0, X_vac_0, X_0_mayer_0, k_0, 0.0,
+        1.0
     ]
     x_0 = DataFrame(
         Dict(
