@@ -18,6 +18,6 @@ module VaccineStockManagementWithMDPs
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
     include("rhs_evaluation.jl")
-    include("get_stochastic_perturb]ation.jl")
+    include("get_stochastic_perturbation.jl")
     include("compute_cost.jl")
 end
