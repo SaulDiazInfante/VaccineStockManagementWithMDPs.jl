@@ -1,11 +1,3 @@
-# `VaccineStockManagementWithMDPs.jl`
-```@meta
-    CurrentModule = VaccineStockManagementWithMDPs
-```
-
-Julia code for the simulation of a Vaccine Stock plugged to a SEIRVD 
-structure and a sequeital set of decisions.
-
 # `load_parameters.jl`
 
 ```@docs
@@ -92,25 +84,6 @@ deploy of the underlying vaccination campaing by
 
 ## `get_interval_solution`
 
-## TODO List. Documentation
-
-- `main.jl` (SAUL)
-- `montecarlo_sampling.jl` (SAUL)
-- `simulation_statistics.jl` (SAUL)
-- `get_vaccine_stock_coverage.jl` (SAUL)
-- `get_interpolated_solution.jl` (SAUL)
-- `get_interval_solution.jl` (SAUL)
-- `get_path_plot.jl (YOFRE)`                    
-- `get_solution_path.jl (YOFRE)`                
-- `get_vaccine_action.jl (YOFRE)`
-- `save_interval_solution.jl (YOFRE)`
-- `save_parameters_json.jl (YOFRE)`
-- `save_solution.jl (YOFRE)`
-
-
-
-
-
 
 # References
 
@@ -125,10 +98,3 @@ deploy of the underlying vaccination campaing by
 5. "Learning Julia: Build high-performance applications for scientific computing" by Anshul Joshi and Rahul Lakhanpal: This book provides an introduction to Julia for scientific computing and covers topics such as data manipulation, visualization, and parallel computing.
 
 6. WHO, A. (2020). WHO methods and data sources for life tables 1990–2019.
-
-
-[coment:] <> (# API 
-    ```@contents
-    Pages = ["./api_reference.md"]
-    ```
-)
