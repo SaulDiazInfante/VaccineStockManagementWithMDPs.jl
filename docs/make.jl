@@ -3,9 +3,18 @@ using Documenter
 using VaccineStockManagementWithMDPs
 
 makedocs(
-    sitename = "VaccineStockManagementWithMDPs",
+    modules=[VaccineStockManagementWithMDPs],
     format = Documenter.HTML(),
-    modules = [VaccineStockManagementWithMDPs]
+    sitename="VaccineStockManagementWithMDPs",
+    pages = [
+        "Basics" => [
+            "index.md",
+            "SEIRVDX_model.md",
+            "controled_SEIRVDX.md"
+        ],
+        "api_reference.md",    
+    ],
+    warnonly=[:missing_docs]
 )
 
 mathengine = MathJax3(Dict(

@@ -1,5 +1,5 @@
 """
-        rhs_evaluation!(t, x, a_t, k, parameters)
+    rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
 
 Approximate the solution to SEIRVDX_vac ODE by returning an array with
 the right-hand side evaluation of The Non-Standard recurrence; refer to
