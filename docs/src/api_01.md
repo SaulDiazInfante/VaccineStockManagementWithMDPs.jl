@@ -7,7 +7,7 @@
 ```@docs
 get_stencil_projection
 get_stochastic_perturbation
-rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
+rhs_evaluation
 compute_cost
 ```
 
