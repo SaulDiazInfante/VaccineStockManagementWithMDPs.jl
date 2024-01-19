@@ -44,19 +44,33 @@ using DataFrames
     )
     x_new = 
         VaccineStockManagementWithMDPs.rhs_evaluation!(
-            t, x_df, opt_policy,a_t, k, p
-         )
+            t, x_df, opt_policy, a_t, k, p
+        )
     x_new_df =  DataFrame(
         Dict(
             zip(header_strs, x_new)
         )
     )
+    x_c =
+        VaccineStockManagementWithMDPs.get_vaccine_stock_coverage(
+            k, p
+        )
+    
+    # Test for load_parameters.jl
     @test(
         VaccineStockManagementWithMDPs.load_parameters().N_grid_size[1] == 500
     )
+    
+    # Test for get_stencil_projection.jl
     @test VaccineStockManagementWithMDPs.get_stencil_projection(t, p) == 2 
+    
+    # Test for rhs_evaluation.jl
     @test sum(x_new[2:8]) == 1.0
+    
+    # Test for get_stochastic_perturbation.jl
     @test p.t_delivery[2] != p_sto.t_delivery[2]
+    
+    # Test for computing_cost.jl
     @test(
         VaccineStockManagementWithMDPs.compute_cost(x_df, p) == 
         999999.9621877202

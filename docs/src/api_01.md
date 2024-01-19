@@ -2,8 +2,6 @@
 
 ## Model Functions
 
-### Dynamics
-
 ```@docs
 get_stencil_projection
 get_stochastic_perturbation
@@ -49,9 +47,9 @@ rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
 ```
 
 This function compute the cost of the actual state using the
-current action $a_t$. The cost is the sum of the conributions regaring
-to the burden of a diseases quantifyed in DALYs and the implicated cost,
-related with the vaccination campaing.
+current action $a_t$. The cost is the sum of the contributions regarding
+to the burden of a diseases quantified in DALYs and the implicated cost,
+related with the vaccination campaign.
 
 According to the definition of DALY we compute this indicator with
 
@@ -77,7 +75,7 @@ According to the definition of DALY we compute this indicator with
 ```
 
 Then we estimate the cost due to the vaccine stock management and
-deploy of the underlying vaccination campaing by
+deploy of the underlying vaccination campaign by
 
 ```math
     \begin{aligned}
@@ -87,7 +85,7 @@ deploy of the underlying vaccination campaing by
                     C(K_t)
                 dt
         \\
-        C_{campaing}(t_{k + 1})
+        C_{campaign}(t_{k + 1})
             &:=
                 \int_{t_k}^{t_{k + 1}}
                     m_4 (X_{vac}(t) - X_{vac}(t_{k}))

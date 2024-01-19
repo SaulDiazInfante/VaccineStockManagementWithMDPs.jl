@@ -20,4 +20,5 @@ module VaccineStockManagementWithMDPs
     include("rhs_evaluation.jl")
     include("get_stochastic_perturbation.jl")
     include("compute_cost.jl")
+    include("get_vaccine_stock_coverage.jl")
 end
