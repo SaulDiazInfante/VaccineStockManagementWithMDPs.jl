@@ -6,6 +6,7 @@
 get_stencil_projection
 get_stochastic_perturbation
 get_vaccine_stock_coverage
+get_vaccine_action!
 ```
 
 #### `get_stencil_projection.jl`
@@ -87,9 +88,11 @@ deploy of the underlying vaccination campaign by
 
 #### `get_solution_path.jl`
 
-#### `get_vaccine_stock_coverage.jl`
-
 #### `get_vaccine_action.jl`
+
+```@docs
+get_vaccine_action!
+```
 
 #### `get_interval_solution`
 

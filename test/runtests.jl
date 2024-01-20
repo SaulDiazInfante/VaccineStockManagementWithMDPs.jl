@@ -75,4 +75,9 @@ x_c =
         VaccineStockManagementWithMDPs.compute_cost(x_df, p) == 
         999999.9621877202
     )
+    @test(
+        VaccineStockManagementWithMDPs.get_vaccine_stock_coverage(
+            k, p
+        ) >= 0.0
+    )
 end

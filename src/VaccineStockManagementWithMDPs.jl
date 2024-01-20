@@ -15,6 +15,7 @@ module VaccineStockManagementWithMDPs
     export get_stochastic_perturbation
     export compute_cost
     export get_vaccine_stock_coverage
+    export get_vaccine_action!
     include("functions.jl")
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
@@ -22,4 +23,5 @@ module VaccineStockManagementWithMDPs
     include("get_stochastic_perturbation.jl")
     include("compute_cost.jl")
     include("get_vaccine_stock_coverage.jl")
+    include("get_vaccine_action.jl")
 end
