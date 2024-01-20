@@ -20,8 +20,7 @@ Documentation wrap three main sections and purposes:
 ```@contents
     Pages = [
         "SEIRVDX_model.md",
-        "controled_SEIRVDX.md",
-        "SEIRVDX_model.md"
+        "controled_SEIRVDX.md"
     ]
 ```
 

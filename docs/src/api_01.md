@@ -5,8 +5,7 @@
 ```@docs
 get_stencil_projection
 get_stochastic_perturbation
-rhs_evaluation
-compute_cost
+get_vaccine_stock_coverage
 ```
 
 #### `get_stencil_projection.jl`
@@ -27,12 +26,6 @@ This function is implemten by computing
 ```
 
 where the index $i$ runs over the projected delivery times $t_i$.
-
-#### `get_stochastic_perturbation.jl`
-
-```@docs
-get_stochastic_perturbation(json_file_name="parameters_model.json")
-```
 
 #### `rhs_evaluation.jl`
 

@@ -10,11 +10,11 @@ Docstring for [VaccineStockManagementWithMDPs.jl](https://github.com/SaulDiazInf
 ## Contents
 
 ```@contents
-Pages = ["api.md", "api_01.md"]
+Pages = ["api_01.md"]
 ```
 
 ## Index
 
 ```@index
-Pages = ["api.md", "api_01.md"]
+Pages = ["api_01.md"]
 ```

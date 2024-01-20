@@ -1,20 +1,18 @@
+using Pkg
+Pkg.activate("..")
 push!(LOAD_PATH, "../src/")
 using Documenter
 using VaccineStockManagementWithMDPs
+include("pages.jl")
 
 makedocs(
     modules=[VaccineStockManagementWithMDPs],
-    format = Documenter.HTML(),
-    sitename="VaccineStockManagementWithMDPs",
-    pages = [
-        "Basics" => [
-            "index.md",
-            "SEIRVDX_model.md",
-            "controled_SEIRVDX.md"
-        ],
-        "api_reference.md",    
-    ],
-    warnonly=[:missing_docs]
+    doctest=false, 
+    clean=true,
+    warnonly=[:missing_docs],
+    sitename="VaccineStockManagementWithMDPs.jl",
+    format=Documenter.HTML(prettyurls=false),
+    pages=pages
 )
 
 mathengine = MathJax3(Dict(
@@ -25,6 +23,7 @@ mathengine = MathJax3(Dict(
         "packages" => ["base", "ams", "autoload", "physics"],
     ),
 )),
+
 
 # Documenter can also automatically deploy documentation to gh-pages.
 # See "Hosting Documentation" and deploydocs() in the Documenter manual
