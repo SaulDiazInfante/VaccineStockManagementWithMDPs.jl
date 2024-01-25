@@ -16,6 +16,7 @@ module VaccineStockManagementWithMDPs
     export compute_cost
     export get_vaccine_stock_coverage
     export get_vaccine_action!
+    export get_interval_solution
     include("functions.jl")
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
@@ -24,4 +25,5 @@ module VaccineStockManagementWithMDPs
     include("compute_cost.jl")
     include("get_vaccine_stock_coverage.jl")
     include("get_vaccine_action.jl")
+    include("get_interval_solution.jl")
 end

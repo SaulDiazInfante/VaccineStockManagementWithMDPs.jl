@@ -3,22 +3,29 @@ using Test
 using DataFrames
 
 p = VaccineStockManagementWithMDPs.load_parameters()
-p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation()
-t = 90
-a_t = 0.25
-k = 0.0015
-S = p.S_0[1]
-E = p.E_0[1]
-I_S = p.I_S_0[1]
-I_A = p.I_A_0[1]
-R = p.R_0[1]
-D = p.D_0[1]
-V = p.V_0[1]
+p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation();
+t = 90; 
+a_t = 0.25; 
+k = 0.0015;
+S = p.S_0[1];
+E = p.E_0[1];
+I_S = p.I_S_0[1];
+I_A = p.I_A_0[1];
+R = p.R_0[1];
+D = p.D_0[1];
+V = p.V_0[1];
 X_vac = p.X_vac_interval[1]
 X_0_mayer = p.X_0_mayer[1]
 K_stock = p.k_stock[1]
+k_0 = p.k_stock[1] / p.N[1]
 CL = sum([S, E, I_S, I_A, R, D, V])
 opt_policy = 1.0
+N_grid_size = p.N_grid_size[1];
+time_horizon_1 = p.t_delivery[2]
+t_interval_1 = LinRange(0, time_horizon_1, N_grid_size)
+operational_levels = p.operational_stock_levels
+solution = zeros(Float64, N_grid_size, 13);
+
 header_strs = [
     "t", "S", "E", "I_S",
     "I_A", "R", "D", "V", "CL",
@@ -26,12 +33,24 @@ header_strs = [
     "action", "opt_policy"
 ]
 x_0_vector = [
-    t, S, E,
+    0.0, S, E,
     I_S, I_A, R,
     D, V, CL,
     X_vac, X_0_mayer, K_stock,
-    a_t, opt_policy
+    0.0, 1.0
 ]
+hat_N_n_0 = sum(x_0_vector[2:8]) - D
+opt_policy = operational_levels[end]
+t_delivery_1 = p.t_delivery[2]
+x_0 = DataFrame(
+    Dict(
+        zip(
+            header_strs,
+            x_0_vector
+        )
+    )
+)
+
 x_df = DataFrame(
     Dict(
         zip(header_strs, x_0_vector)
@@ -47,9 +66,22 @@ x_new_df = DataFrame(
     )
 )
 x_c =
-    VaccineStockManagementWithMDPs.get_vaccine_stock_coverage(k, p
-    )
+    VaccineStockManagementWithMDPs.get_vaccine_stock_coverage(k_0, p)
+t = 80.0
+k = 2
 
+a_t = VaccineStockManagementWithMDPs.get_vaccine_action!(x_c, t_delivery_1, p)
+solution_1 =
+    VaccineStockManagementWithMDPs.get_interval_solution!(
+        t_interval_1,
+        x_0,
+        opt_policy,
+        a_t,
+        k_0,
+        p
+    )
+sum(solution_1[end, 2:8])
+# TODO: define a_t to test get_interval_solution.
 @testset "VaccineStockManagementWithMDPs.jl" begin
     @test(
         VaccineStockManagementWithMDPs.
@@ -79,5 +111,22 @@ x_c =
         VaccineStockManagementWithMDPs.get_vaccine_stock_coverage(
             k, p
         ) >= 0.0
+    )
+    @test(
+        VaccineStockManagementWithMDPs.get_vaccine_action!(
+            x_c, t, p
+        ) >= 0.0
+    )
+    sol = VaccineStockManagementWithMDPs.get_interval_solution!(
+        t_interval_1,
+        x_0,
+        opt_policy,
+        a_t,
+        k_0,
+        p
+    );
+    cl_sol = sum(sol[end, 2:8]);
+    @test(
+        isapprox(cl_sol, 1.0, rtol=1e-2, atol=1e-3)
     )
 end

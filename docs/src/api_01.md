@@ -2,11 +2,10 @@
 
 ## Model Functions
 
+### Parameters
+
 ```@docs
-get_stencil_projection
-get_stochastic_perturbation
-get_vaccine_stock_coverage
-get_vaccine_action!
+load_parameters
 ```
 
 #### `get_stencil_projection.jl`
@@ -15,7 +14,7 @@ get_vaccine_action!
 get_stencil_projection(t, parameters)
 ```
 
-This function is implemten by computing
+This function is implements by computing
 
 ```math
 \begin{aligned}
@@ -27,6 +26,12 @@ This function is implemten by computing
 ```
 
 where the index $i$ runs over the projected delivery times $t_i$.
+
+### `get_stochastic_perturbation.jl`
+
+```@docs
+get_stochastic_perturbation
+```
 
 #### `rhs_evaluation.jl`
 
@@ -86,7 +91,11 @@ deploy of the underlying vaccination campaign by
     \end{aligned}
 ```
 
-#### `get_solution_path.jl`
+#### `get_vaccine_stock_coverage.jl`
+
+```@docs
+get_vaccine_stock_coverage
+```
 
 #### `get_vaccine_action.jl`
 
@@ -94,13 +103,15 @@ deploy of the underlying vaccination campaign by
 get_vaccine_action!
 ```
 
-#### `get_interval_solution`
-
-### Parameters
+#### `get_interval_solution!`
 
 ```@docs
-load_parameters
+get_interval_solution!
 ```
+
+#### `get_solution_path.jl`
+
+
 
 ### References
 
