@@ -111,7 +111,9 @@ get_interval_solution!
 
 #### `get_solution_path.jl`
 
-
+```@docs
+get_solution_path.!
+```
 
 ### References
 

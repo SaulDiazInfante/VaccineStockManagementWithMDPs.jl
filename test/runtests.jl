@@ -71,17 +71,8 @@ t = 80.0
 k = 2
 
 a_t = VaccineStockManagementWithMDPs.get_vaccine_action!(x_c, t_delivery_1, p)
-solution_1 =
-    VaccineStockManagementWithMDPs.get_interval_solution!(
-        t_interval_1,
-        x_0,
-        opt_policy,
-        a_t,
-        k_0,
-        p
-    )
-sum(solution_1[end, 2:8])
-# TODO: define a_t to test get_interval_solution.
+#
+# TODO: GetSolutionPath documentation
 @testset "VaccineStockManagementWithMDPs.jl" begin
     @test(
         VaccineStockManagementWithMDPs.
@@ -129,4 +120,6 @@ sum(solution_1[end, 2:8])
     @test(
         isapprox(cl_sol, 1.0, rtol=1e-2, atol=1e-3)
     )
+    # TODO: Compile and test save_invterval_solution.jl
+    # sol_path = VaccineStockManagementWithMDPs.get_solution_path!(p)
 end

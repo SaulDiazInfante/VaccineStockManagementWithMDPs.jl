@@ -57,7 +57,7 @@ function rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
         lambda_f = (beta_s * I_S + beta_a * I_A) * hat_N_n^(-1)
 
         S_new = ((1 - psi * mu) * S +
-                 psi * (mu * hat_N_n + omega_v * V
+                psi * (mu * hat_N_n + omega_v * V
                         + delta_r * R)
         ) / (1 + psi * (lambda_f + opt_policy * a_t))
 
@@ -135,30 +135,38 @@ function rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
                                 + delta_r * R)
                 ) / (1 + psi * (lambda_f + a_t))
 
-                E_new = ((1 - psi * mu) * E
-                         +
-                         psi * lambda_f * (S_new + (1 - epsilon) * V)
-                ) / (1 + psi * delta_e)
+                E_new = (
+                        (1 - psi * mu) * E
+                                +
+                                psi * lambda_f * (S_new + (1 - epsilon) * V)
+                        ) / (1 + psi * delta_e)
 
                 I_S_new = ((1 - psi * mu) * I_S
                            +
-                           psi * p * delta_e * E_new
-                ) / (1 + psi * alpha_s)
+                                psi * p * delta_e * E_new
+                        ) / (1 + psi * alpha_s)
 
                 I_A_new = ((1 - psi * mu) * I_A
                            +
-                           psi * (1 - p) * delta_e * E_new
+                                psi * (1 - p) * delta_e * E_new
                 ) / (1 + psi * alpha_a)
 
                 R_new = ((1 - psi * (mu + delta_r)) * R
-                         +
-                         psi * ((1 - theta) * alpha_s * I_S_new + alpha_a * I_A_new))
-
+                                +
+                                psi * (
+                                        (1 - theta) * alpha_s * I_S_new 
+                                        + alpha_a * I_A_new
+                                )
+                        )
                 D_new = psi * theta * alpha_s * I_S_new + D
-
-                V_new = ((1 - psi * ((1 - epsilon) * lambda_f + mu + omega_v)) * V
-                         +
-                         psi * (a_t) * S_new)
+                V_new = (
+                        (
+                                1 - psi * ((1 - epsilon) * lambda_f 
+                                + mu + omega_v
+                        )) * V
+                        +
+                        psi * (a_t) * S_new
+                )
 
                 x_new[2:8] = [
                         S_new,
@@ -172,14 +180,14 @@ function rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
 
                 CL_new = sum(
                         [
-                        S_new,
-                        E_new,
-                        I_S_new,
-                        I_A_new,
-                        R_new,
-                        D_new,
-                        V_new
-                ]
+                                S_new,
+                                E_new,
+                                I_S_new,
+                                I_A_new,
+                                R_new,
+                                D_new,
+                                V_new
+                        ]
                 )
                 delta_X_vac = (a_t) * (S + E + I_A + R) * psi
                 X_vac_new = X_vac + delta_X_vac
@@ -192,6 +200,5 @@ function rhs_evaluation!(t, x, opt_policy, a_t, k, parameters)
         x_new[12] = K_new
         x_new[13] = a_t
         x_new[14] = opt_policy
-        # TODO: ode for mayer form
         return x_new
 end
