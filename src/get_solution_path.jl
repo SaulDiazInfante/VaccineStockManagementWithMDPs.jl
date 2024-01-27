@@ -1,6 +1,9 @@
 """
     get_solution_path!(parameters::DataFrame)
-    Compute a realization path solution process
+    Compute a path of the solution process
+# Arguments
+- `parameters::DataFrame: Current values for model parameters and 
+    simulation configuration.
 ...
 """
 function get_solution_path!(parameters::DataFrame)

@@ -109,10 +109,16 @@ get_vaccine_action!
 get_interval_solution!
 ```
 
+#### `save_interval_solution.jl`
+
+```@docs
+save_interval_solution
+```
+
 #### `get_solution_path.jl`
 
 ```@docs
-get_solution_path.!
+get_solution_path!
 ```
 
 ### References

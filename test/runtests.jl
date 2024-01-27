@@ -1,7 +1,7 @@
 using VaccineStockManagementWithMDPs
 using Test
 using DataFrames
-
+#
 p = VaccineStockManagementWithMDPs.load_parameters()
 p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation();
 t = 90; 
@@ -71,6 +71,16 @@ t = 80.0
 k = 2
 
 a_t = VaccineStockManagementWithMDPs.get_vaccine_action!(x_c, t_delivery_1, p)
+
+x = VaccineStockManagementWithMDPs.get_interval_solution!(
+        t_interval_1,
+        x_0,
+        opt_policy,
+        a_t,
+        k_0,
+        p
+);
+time = x[:, 1]
 #
 # TODO: GetSolutionPath documentation
 @testset "VaccineStockManagementWithMDPs.jl" begin
@@ -120,6 +130,21 @@ a_t = VaccineStockManagementWithMDPs.get_vaccine_action!(x_c, t_delivery_1, p)
     @test(
         isapprox(cl_sol, 1.0, rtol=1e-2, atol=1e-3)
     )
+    names_str = ["time", "S", "E",
+        "I_S", "I_A", "R",
+        "D", "V", "CL",
+        "X_vac", "K_stock", "action"
+    ]
+    df = VaccineStockManagementWithMDPs.save_interval_solution(x;
+        header_strs=names_str,
+        file_name="solution_interval.csv"
+    )
+    @test(
+        issetequal(names(df), names_str)
+    )
     # TODO: Compile and test save_invterval_solution.jl
-    # sol_path = VaccineStockManagementWithMDPs.get_solution_path!(p)
+    sol_path = VaccineStockManagementWithMDPs.get_solution_path!(p)
+    @test(
+        isapprox(sol_path[1].CL[1], 1.0, rtol=1e-2, atol=1e-3)
+    )
 end
