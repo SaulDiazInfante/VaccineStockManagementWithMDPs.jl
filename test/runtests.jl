@@ -147,4 +147,14 @@ time = x[:, 1]
     @test(
         isapprox(sol_path[1].CL[1], 1.0, rtol=1e-2, atol=1e-3)
     )
+    
+    json_file = "../data/parameters_model.json"
+    df_par, df_mc, path_par, path_mc =  
+        VaccineStockManagementWithMDPs.montecarlo_sampling(10, json_file);
+    @test(
+        typeof(path_mc) == String
+    )
+    @test(
+        typeof(df_par) == DataFrame
+    )
 end

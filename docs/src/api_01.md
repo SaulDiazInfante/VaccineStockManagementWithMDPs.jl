@@ -121,6 +121,12 @@ save_interval_solution
 get_solution_path!
 ```
 
+#### `montecarlo_sampling.jl`
+
+```@docs
+montecarlo_sampling
+```
+
 ### References
 
 1. "Julia Programming for Operations Research" by Changhyun Kwon and Youngdae Cho: This book focuses on using Julia for solving optimization problems and is suitable for readers with a background in operations research or mathematical optimization.
