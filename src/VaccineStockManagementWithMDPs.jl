@@ -7,7 +7,7 @@ to details.
 """
 module VaccineStockManagementWithMDPs
     using JSON, DataFrames, Distributions, CSV, PlotlyJS, LaTeXStrings
-    using Dates, ProgressMeter
+    using Dates, ProgressMeter, Interpolations
     export greet_vaccine_stock_management_with_mdps
     export load_parameters
     export get_stencil_projection
@@ -20,6 +20,7 @@ module VaccineStockManagementWithMDPs
     export get_solution_path!
     export save_interval_solution
     export montecarlo_sampling
+    export get_interpolated_solution
     include("functions.jl")
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
@@ -32,4 +33,5 @@ module VaccineStockManagementWithMDPs
     include("get_solution_path.jl")
     include("save_interval_solution.jl")
     include("montecarlo_sampling.jl")
+    include("get_interpolated_solution.jl")
 end

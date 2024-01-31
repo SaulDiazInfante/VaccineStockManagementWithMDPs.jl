@@ -126,6 +126,11 @@ get_solution_path!
 ```@docs
 montecarlo_sampling
 ```
+#### `get_interpolated_solution.jl`
+
+```@docs
+get_interpolated_solution
+```
 
 ### References
 

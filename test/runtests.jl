@@ -1,6 +1,6 @@
 using VaccineStockManagementWithMDPs
 using Test
-using DataFrames
+using DataFrames, CSV
 #
 p = VaccineStockManagementWithMDPs.load_parameters()
 p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation();
@@ -157,4 +157,21 @@ time = x[:, 1]
     @test(
         typeof(df_par) == DataFrame
     )
+    path = "./data/df_mc.csv"
+    trajectories = CSV.read(path, DataFrame)
+    idx_0 = (trajectories.idx_path .== 1)
+    query = trajectories[idx_0, :]
+    line_time = query.time
+    interpolated_trajectory_1 =
+        VaccineStockManagementWithMDPs.get_interpolated_solution(
+            query,
+            line_time
+    )
+
+    is_cl = sum(
+        interpolated_trajectory_1[end, [:S, :E, :I_A, :I_S,:R, :V, :D]]
+    )
+    @test(
+        isapprox(is_cl, 1.0, rtol=1e-2, atol=1e-3)
+    )    
 end
