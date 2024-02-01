@@ -21,6 +21,7 @@ module VaccineStockManagementWithMDPs
     export save_interval_solution
     export montecarlo_sampling
     export get_interpolated_solution
+    export get_simulation_statistics
     include("functions.jl")
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
@@ -34,4 +35,5 @@ module VaccineStockManagementWithMDPs
     include("save_interval_solution.jl")
     include("montecarlo_sampling.jl")
     include("get_interpolated_solution.jl")
+    include("get_simulation_statistics.jl")
 end

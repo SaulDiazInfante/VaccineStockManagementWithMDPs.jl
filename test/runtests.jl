@@ -2,7 +2,9 @@ using VaccineStockManagementWithMDPs
 using Test
 using DataFrames, CSV
 #
-p = VaccineStockManagementWithMDPs.load_parameters()
+p = VaccineStockManagementWithMDPs.load_parameters(
+    "./data/parameters_model.json"
+)
 p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation();
 t = 90; 
 a_t = 0.25; 
@@ -59,7 +61,7 @@ x_df = DataFrame(
 x_new =
     VaccineStockManagementWithMDPs.rhs_evaluation!(
         t, x_df, opt_policy, a_t, k, p
-    )
+)
 x_new_df = DataFrame(
     Dict(
         zip(header_strs, x_new)
@@ -91,7 +93,9 @@ time = x[:, 1]
     
     # Test for load_parameters.jl
     @test(
-        VaccineStockManagementWithMDPs.load_parameters().N_grid_size[1] == 500
+        VaccineStockManagementWithMDPs.load_parameters(
+            "./data/parameters_model.json"
+        ).N_grid_size[1] == 500
     )
     
     # Test for get_stencil_projection.jl
@@ -142,15 +146,16 @@ time = x[:, 1]
     @test(
         issetequal(names(df), names_str)
     )
-    # TODO: Compile and test save_invterval_solution.jl
+
     sol_path = VaccineStockManagementWithMDPs.get_solution_path!(p)
     @test(
         isapprox(sol_path[1].CL[1], 1.0, rtol=1e-2, atol=1e-3)
     )
     
-    json_file = "../data/parameters_model.json"
+    json_file = "./data/parameters_model.json"
     df_par, df_mc, path_par, path_mc =  
         VaccineStockManagementWithMDPs.montecarlo_sampling(10, json_file);
+    
     @test(
         typeof(path_mc) == String
     )
@@ -173,5 +178,6 @@ time = x[:, 1]
     )
     @test(
         isapprox(is_cl, 1.0, rtol=1e-2, atol=1e-3)
-    )    
+    )
+        
 end
