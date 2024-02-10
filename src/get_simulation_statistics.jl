@@ -3,6 +3,9 @@
         data_path="./data/df_mc.csv",
         parameters_path = "par.json"
     )
+    returns the median, and qunatiles [0.25, 0.95] for each time of
+    simulation.
+    
 # Arguments
 - `data_paht::String`: Path with the output of montecarlo sampling
 - `parameters_path::String`: Path with the json source for config parameters
@@ -10,7 +13,7 @@
 """
 function get_simulation_statistics(
     data_path = "./data/df_mc.csv",
-    parameters_path = "par.json"
+    parameters_path = "./data/parameters_model.json"
 )
     trajectories = CSV.read(data_path, DataFrame);
     dropmissing!(trajectories)
@@ -165,4 +168,5 @@ function get_simulation_statistics(
         PlotlyBase.to_html(io, fig.plot)
     end
     # TODO implement return
+    return data
 end

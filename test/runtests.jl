@@ -3,7 +3,7 @@ using Test
 using DataFrames, CSV
 #
 p = VaccineStockManagementWithMDPs.load_parameters(
-    "./data/parameters_model.json"
+    "data/parameters_model.json"
 )
 p_sto = VaccineStockManagementWithMDPs.get_stochastic_perturbation();
 t = 90; 
@@ -179,5 +179,9 @@ time = x[:, 1]
     @test(
         isapprox(is_cl, 1.0, rtol=1e-2, atol=1e-3)
     )
-        
+    test_data = VaccineStockManagementWithMDPs.get_simulation_statistics()
+    cond = test_data[1] .>= test_data[2]
+    @test(
+        nrow(cond) == sum(cond.S)
+    )
 end
