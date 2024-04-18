@@ -2,7 +2,7 @@ using VaccineStockManagementWithMDPs
 using Test
 using DataFrames, CSV
 #
-sampling_size = 50;
+sampling_size = 2500;
 
 df_par, df_mc, path_par, path_mc = montecarlo_sampling(
     sampling_size,
