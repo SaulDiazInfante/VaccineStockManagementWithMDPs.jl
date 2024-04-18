@@ -9,10 +9,10 @@ import seaborn as sns
 plt.style.use("dark_background")
 #
 data_folder = "./data"
-df_m = pd.read_csv("../data/df_median.csv")
-df_l = pd.read_csv("../data/df_lower_q.csv")
-df_u = pd.read_csv("../data/df_upper_q.csv")
-par = pd.read_json("../data/parameters_model.json")
+df_m = pd.read_csv("./data/df_median.csv")
+df_l = pd.read_csv("./data/df_lower_q.csv")
+df_u = pd.read_csv("./data/df_upper_q.csv")
+par = pd.read_json("./data/parameters_model.json")
 time_line = df_m["time"]
 start_date='2021-01-01'
 time_line_date_in_days = pd.to_datetime(start_date) + \
