@@ -13,7 +13,7 @@ the parameters enclosed in the file .json.
 """
 function montecarlo_sampling(
     sampling_size=10000,
-    json_file_name="parameters_model.json"
+    json_file_name="data/parameters_model.json"
 )
     parameters = load_parameters(json_file_name)
     x0, df = get_solution_path!(parameters)

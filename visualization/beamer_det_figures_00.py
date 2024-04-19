@@ -7,9 +7,9 @@ import seaborn as sns
 #
 plt.style.use('dark_background')
 #
-data_folder = "../data"
-df = pd.read_csv("../data/df_solution.csv")
-par = pd.read_json("../data/parameters_model.json")
+data_folder = "./data"
+df = pd.read_csv("./data/df_solution.csv")
+par = pd.read_json("./data/parameters_model.json")
 time_line = df["time"]
 start_date='2021-01-01'
 time_line_date_in_days = pd.to_datetime(start_date) + \
