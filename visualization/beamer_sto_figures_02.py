@@ -1,21 +1,22 @@
-from cProfile import label
-from matplotlib import cbook
-from matplotlib import figure
-import numpy as np
+"""_summary
+
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+
 #
 plt.style.use("dark_background")
 #
-data_folder = "./data"
+
+DATA_FOLDER = "./data"
 df_m = pd.read_csv("./data/df_median.csv")
 df_l = pd.read_csv("./data/df_lower_q.csv")
 df_u = pd.read_csv("./data/df_upper_q.csv")
 par = pd.read_json("./data/parameters_model.json")
 time_line = df_m["time"]
-start_date='2021-01-01'
-time_line_date_in_days = pd.to_datetime(start_date) + \
+START_DATE='2021-01-01'
+time_line_date_in_days = pd.to_datetime(START_DATE) + \
     pd.to_timedelta(time_line.values, unit='D')
 df_m["date"] = time_line_date_in_days
 df_l["date"] = time_line_date_in_days
@@ -41,7 +42,7 @@ df_m_states = N * df_m[states]
 df_l_states = N * df_l[states]
 df_u_states = N * df_u[states]
 #
-
+#
 ## Incidence figures cumsum()
 #
 #
@@ -52,7 +53,7 @@ figure_Is, axes_Is = plt.subplots(
 )
 axes_Is.set_ylabel(r'Cumulative Incidence')
 df_l_states['I_S'].cumsum().plot(
-    ax=axes_Is, 
+    ax=axes_Is,
     sharex=True,
     lw=1,
     color='red',
@@ -76,7 +77,7 @@ plt.fill_between(df_l_states.index,
     figure=figure_Is
 )
 df_m_states['I_S'].cumsum().plot(
-    ax=axes_Is, 
+    ax=axes_Is,
     sharex=True,
     lw=2,
     color='red',
@@ -84,17 +85,20 @@ df_m_states['I_S'].cumsum().plot(
     legend=False
 )
 axins = axes_Is.inset_axes([0.3, 0.7, 0.1, 0.161])
-axins.plot(df_m_states['I_S'].index,
-           df_m_states['I_S'].cumsum(),
-           color='red'
+axins.plot(
+    df_m_states['I_S'].index,
+    df_m_states['I_S'].cumsum(),
+    color='red'
 )
-axins.plot(df_m_states['I_S'].index,
-           df_l_states['I_S'].cumsum(),
-           color='red'
+axins.plot(
+    df_m_states['I_S'].index,
+    df_l_states['I_S'].cumsum(),
+    color='red'
 )
-axins.plot(df_m_states['I_S'].index,
-           df_u_states['I_S'].cumsum(),
-           color='red'
+axins.plot(
+    df_m_states['I_S'].index,
+    df_u_states['I_S'].cumsum(),
+    color='red'
 )
 axins.fill_between(df_l_states.index,
     df_l_states['I_S'].cumsum(),
@@ -103,13 +107,13 @@ axins.fill_between(df_l_states.index,
     alpha=0.5,
     figure=figure_Is
 )
-x1 = pd.Timestamp('2021-11-13 12:28:48')
+x1 = pd.Timestamp('2021-10-01 12:28:48')
 x2 = pd.Timestamp('2021-11-17 00:00:00')
-y1, y2 = 2.4e5, 2.6e5
+y1, y2 = 1.6e5, 2.4e5
 axins.set_xlim(x1, x2)
 axins.set_ylim(y1, y2)
 axins.set_xticklabels([])
 # axins.set_yticklabels([])
-axes_Is.indicate_inset_zoom(axins, edgecolor="black")
+axes_Is.indicate_inset_zoom(axins, edgecolor="white")
 plt.savefig("cumulative_symptomatic_incidence.svg", dpi=300)
 plt.show()

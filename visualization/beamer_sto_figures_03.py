@@ -1,10 +1,9 @@
-from cProfile import label
-from matplotlib import cbook
-from matplotlib import figure
-import numpy as np
+"""_summary_
+
+"""
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+
 #
 plt.style.use("dark_background")
 
@@ -104,13 +103,13 @@ axins.fill_between(df_l_states.index,
     alpha=0.5,
     figure=figure_Is
 )
-x1 = pd.Timestamp('2021-11-13 12:28:48')
+x1 = pd.Timestamp('2021-10-10 12:28:48')
 x2 = pd.Timestamp('2021-11-17 00:00:00')
-y1, y2 = 3.4e5, 3.7e5
+y1, y2 = 2.7e5, 3.4e5
 axins.set_xlim(x1, x2)
 axins.set_ylim(y1, y2)
 axins.set_xticklabels([])
 # axins.set_yticklabels([])
-axes_Is.indicate_inset_zoom(axins, edgecolor="black")
+axes_Is.indicate_inset_zoom(axins, edgecolor="white")
 plt.savefig("cumulative_deaths.svg", dpi=300)
 plt.show()

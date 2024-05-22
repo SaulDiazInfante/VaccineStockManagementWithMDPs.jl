@@ -5,18 +5,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
-
-def plot_rect(ax, bottom, left, width, height, color = 'C0'):
-        ax.add_patch(
-            patches.Rectangle(
-                (left, bottom),
-                width,
-                height,
-                linewidth=1,
-                edgecolor=color,
-                facecolor=color)
-        )
-#
 plt.style.use('dark_background')
 #
 DATA_FOLDER = "./data"
