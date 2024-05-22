@@ -73,7 +73,7 @@
     ],
     "low_stock": 2000.0,
     "operational_stock_levels": [
-        0.45,
+        0.0,
         0.5,
         0.7,
         0.8,
