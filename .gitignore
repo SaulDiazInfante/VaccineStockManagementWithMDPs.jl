@@ -5,4 +5,5 @@
 /Manifest.toml
 *.csv
 /data
+*.pyc
 

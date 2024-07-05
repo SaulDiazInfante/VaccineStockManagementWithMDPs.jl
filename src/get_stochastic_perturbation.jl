@@ -24,7 +24,7 @@ function get_stochastic_perturbation(
         eta_t = Truncated(
             Normal(
                 k_stock[t],
-                0.5 * sqrt(k_stock[t])
+                sqrt(k_stock[t])
             ),
             0, 2 * k_stock[t]
         )
@@ -36,7 +36,7 @@ function get_stochastic_perturbation(
         # aux_t[t] = aux_t[t-1] + delta_t * (1.0 + rand(u, 1)[1])  
         aux_t[t] = aux_t[t-1] + delta_tau
         xi_t = rand(eta_t, 1)[1]
-        aux_k[t] = abs(xi_t)
+        aux_k[t] = xi_t
     end
     par.t_delivery = aux_t
     par.k_stock = aux_k

@@ -8,8 +8,7 @@ to details.
 module VaccineStockManagementWithMDPs
     using JSON, DataFrames, Distributions
     using CSV, PlotlyJS, LaTeXStrings
-    using Dates, ProgressMeter, Interpolations, 
-    export greet_vaccine_stock_management_with_mdps
+using Dates, ProgressMeter, Interpolations
     export load_parameters
     export get_stencil_projection
     export rhs_evaluation!
