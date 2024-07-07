@@ -33,16 +33,13 @@ function get_confidence_bands(
     color_ref = (:grey0, 1.0)
     axtop = Axis(f[1, 1], ylabel="Stock")
     axmidle = Axis(f[2, 1], ylabel="Vaccination rate")
-    axbottom = Axis(f[3, 1], ylabel="Optimal Decision")
+    axbottom = Axis(f[3, 1], xlabel="Decision", ylabel="Count")
     axright = Axis(f[1:3, 2], ylabel=L"I_S")
     #
     df_ref = filter(
         :idx_path => n -> n == 1,
         df_mc
     )
-
-    i = 1
-    filename = file_name * "_0" * string(i) * ".png"
 
     # Stock
     lines!(
@@ -66,6 +63,9 @@ function get_confidence_bands(
         pop_size * df_upper_q[!, :K_stock],
         alpha=0.3
     )
+    i = 1
+    filename = file_name * "_0" * string(i) * ".png"
+    save(filename, f)
     lines!(
         axtop,
         df_ref[!, :time],
@@ -79,12 +79,11 @@ function get_confidence_bands(
         pop_size * df_median[!, :K_stock],
         color=color_m
     )
+    i = i + 1
+    filename = file_name * "_0" * string(i) * ".png"
     save(filename, f)
 
     # Vaccination rate
-    i = i + 1
-    filename = file_name * "_0" * string(i) * ".png"
-
     lines!(
         axmidle,
         df_lower_q[!, :time],
@@ -120,13 +119,12 @@ function get_confidence_bands(
         pop_size * df_median[!, :action],
         color=color_m
     )
+    i = i + 1
+    filename = file_name * "_0" * string(i) * ".png"
     save(filename, f)
 
 
     # Symtomatic Infected class
-    i = i + 1
-    filename = file_name * "_0" * string(i) * ".png"
-
     lines!(
         axright,
         df_upper_q[!, :time],
@@ -148,11 +146,6 @@ function get_confidence_bands(
         pop_size * df_upper_q[!, :I_S],
         alpha=0.3
     )
-    save(filename, f)
-
-    # Vaccination rate
-    i = i + 1
-    filename = file_name * "_0" * string(i) * ".png"
 
     lines!(
         axright,
@@ -167,12 +160,11 @@ function get_confidence_bands(
         pop_size * df_median[!, :I_S],
         color=color_m
     )
-    save(filename, f)
-
-    # Symtomatic Infected class
-
     i = i + 1
     filename = file_name * "_0" * string(i) * ".png"
+    save(filename, f)
+
+    # Counter plot
     count_opt_decs = countmap(df_mc[!, :opt_policy])
     barplot!(
         axbottom,
@@ -183,6 +175,8 @@ function get_confidence_bands(
         #colormap =colors[1:size(collect(keys(count_opt_decs)))[1]]
         color=[:red, :orange, :azure, :brown]
     )
-    save(file_name, f)
+    i = i + 1
+    filename = file_name * "_0" * string(i) * ".png"
+    save(filename, f)
     f
 end
