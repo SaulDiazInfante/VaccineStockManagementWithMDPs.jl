@@ -24,7 +24,7 @@ function get_stochastic_perturbation(
         eta_t = Truncated(
             Normal(
                 k_stock[t],
-                sqrt(k_stock[t])
+                0.5 * sqrt(k_stock[t])
             ),
             0, 2 * k_stock[t]
         )

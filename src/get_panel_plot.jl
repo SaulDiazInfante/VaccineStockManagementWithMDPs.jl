@@ -1,18 +1,17 @@
-using VaccineStockManagementWithMDPs
-using Test
-using DataFrames, CSV
-using CairoMakie
-CairoMakie.activate!()
-#
-sampling_size = 100;
+"""
+Returns a figure that encloses a panel visualization with 
+vaccine stock,
+vaccination rate, and optimal decision at the left, 
+and the Infecte class evulution on the right for a number of 
+n_paths realizations.
 
-df_par, df_mc, path_par, path_mc = montecarlo_sampling(
-    sampling_size,
-    "data/parameters_model.json"
-)
-df_stat = get_simulation_statistics()
+# Arguments
+- `df_mc::DataFrame`: DataFrame with the MonteCarlo Sampling
+- `n_paths::Int`: Number of sampling paths to plot
+"""
 
-function panel_plot(n_paths::Int)
+function get_panel_plot(df_mc::DataFrame, n_paths::Int)
+
     f = Figure(
         size=(1000, 700)
     )
@@ -63,43 +62,5 @@ function panel_plot(n_paths::Int)
         filename = "panel_0" * string(i) * ".png"
         save(filename, f)
     end
-    f
-
-
+    return f
 end
-
-function plot_confidence_bands()
-    f = Figure(
-        size=(1000, 700)
-    )
-
-    axtop = Axis(f[1, 1], ylabel="Stock")
-    axmidle = Axis(f[2, 1], ylabel="Vaccination rate")
-
-
-
-    lines!(
-        axtop,
-        data_path_i[!, :time],
-        data_path_i[!, :K_stock]
-    )
-    band!(
-        axtop,
-        data_path_i[!, :time],
-        0.0,
-        data_path_i[!, :K_stock],
-        alpha=0.3
-    )
-
-
-end
-
-
-dark_latexfonts = merge(theme_dark(), theme_latexfonts())
-
-
-with_theme(dark_latexfonts) do
-    panel_plot(5)
-end
-
-
