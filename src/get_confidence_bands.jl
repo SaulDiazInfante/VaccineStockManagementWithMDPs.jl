@@ -44,6 +44,16 @@ function get_confidence_bands(
     # Stock
     lines!(
         axtop,
+        df_ref[!, :time],
+        pop_size * df_ref[!, :K_stock],
+        color=color_ref
+    )
+    i = 1
+    filename = file_name * "_0" * string(i) * ".png"
+    save(filename, f)
+
+    lines!(
+        axtop,
         df_lower_q[!, :time],
         pop_size * df_lower_q[!, :K_stock],
         color=color_q
@@ -63,16 +73,15 @@ function get_confidence_bands(
         pop_size * df_upper_q[!, :K_stock],
         alpha=0.3
     )
-    i = 1
-    filename = file_name * "_0" * string(i) * ".png"
-    save(filename, f)
     lines!(
         axtop,
         df_ref[!, :time],
         pop_size * df_ref[!, :K_stock],
         color=color_ref
     )
-
+    i = i + 1
+    filename = file_name * "_0" * string(i) * ".png"
+    save(filename, f)
     lines!(
         axtop,
         df_median[!, :time],
