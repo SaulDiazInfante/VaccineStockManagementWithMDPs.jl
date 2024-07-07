@@ -34,7 +34,7 @@ function get_confidence_bands(
     axtop = Axis(f[1, 1], ylabel="Stock")
     axmidle = Axis(f[2, 1], ylabel="Vaccination rate")
     axbottom = Axis(f[3, 1], xlabel="Decision", ylabel="Count")
-    axright = Axis(f[1:3, 2], ylabel=L"I_S")
+    axright = Axis(f[1:3, 2], xlabel="time (days)", ylabel=L"I_S")
     #
     df_ref = filter(
         :idx_path => n -> n == 1,
