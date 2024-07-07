@@ -7,10 +7,10 @@ and the Infecte class evulution on the right for a number of
 n_paths realizations.
 
 # Arguments
-- `df_mc::DataFrame`: DataFrame with the MonteCarlo Sampling
 - `df_lower_q::DataFrame`: 
 - `df_median::DataFrame`:
 - `df_upper_q::DataFrame`:
+- `df_ref::DataFrame`: DataFrame with the opt_Policy col from MonteCarlo Sampling 
 - `pop_size::Float64`:
 - `file_name::AbstractString`:
 """
@@ -19,6 +19,7 @@ function get_confidence_bands(
     df_lower_q::DataFrame,
     df_median::DataFrame,
     df_upper_q::DataFrame,
+    df_ref::DataFrame,
     pop_size::Float64,
     file_name::AbstractString
 )
