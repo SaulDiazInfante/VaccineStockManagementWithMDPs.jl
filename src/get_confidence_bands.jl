@@ -19,7 +19,7 @@ function get_confidence_bands(
     df_lower_q::DataFrame,
     df_median::DataFrame,
     df_upper_q::DataFrame,
-    df_ref::DataFrame,
+    df_mc::DataFrame,
     pop_size::Float64,
     file_name::AbstractString
 )
@@ -36,6 +36,11 @@ function get_confidence_bands(
     axbottom = Axis(f[3, 1], ylabel="Optimal Decision")
     axright = Axis(f[1:3, 2], ylabel=L"I_S")
     #
+    df_ref = filter(
+        :idx_path => n -> n == 1,
+        df_mc
+    )
+
     i = 1
     filename = file_name * "_0" * string(i) * ".png"
 

@@ -2,7 +2,6 @@ using VaccineStockManagementWithMDPs
 using Test
 using DataFrames, CSV
 using CairoMakie
-using StatsBase
 CairoMakie.activate!()
 
 path_lower_q = joinpath("data", "df_lower_q.csv")
@@ -18,10 +17,6 @@ df_upper_q = DataFrame(CSV.File(path_upper_q))
 df_mc = DataFrame(CSV.File(path_mc_sampling))
 df_par = DataFrame(CSV.File(path_par))
 
-df_ref = filter(
-    :idx_path => n -> n == 1,
-    df_mc
-)
 pop_size = df_par[1, :N]
 
 
@@ -40,11 +35,12 @@ ggplot_theme = Theme(
 )
 
 with_theme(ggplot_theme) do
-    f = plot_confidence_bands(
+    f = get_confidence_bands(
         df_lower_q,
         df_median,
         df_upper_q,
+        df_mc,
         pop_size,
-        "confidence_bands.png"
+        "confidence_bands"
     )
 end
