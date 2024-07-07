@@ -9,7 +9,7 @@ module VaccineStockManagementWithMDPs
     using JSON, DataFrames, Distributions
     using CSV, PlotlyJS, LaTeXStrings
 using Dates, ProgressMeter, Interpolations
-using CairoMakie
+using CairoMakie, StatsBase
     export load_parameters
     export get_stencil_projection
     export rhs_evaluation!
@@ -24,6 +24,7 @@ using CairoMakie
     export get_interpolated_solution
     export get_simulation_statistics
 export get_panel_plot
+export get_confidence_bands
     include("functions.jl")
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
@@ -39,4 +40,5 @@ export get_panel_plot
     include("get_interpolated_solution.jl")
     include("get_simulation_statistics.jl")
 include("get_panel_plot.jl")
+include("get_confidence_bands.jl")
 end

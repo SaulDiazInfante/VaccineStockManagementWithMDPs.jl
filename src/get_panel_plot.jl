@@ -7,10 +7,11 @@ n_paths realizations.
 
 # Arguments
 - `df_mc::DataFrame`: DataFrame with the MonteCarlo Sampling
+- `pop_size::Float64`: Population size to scalate Incidence and Number of doses
 - `n_paths::Int`: Number of sampling paths to plot
 """
 
-function get_panel_plot(df_mc::DataFrame, n_paths::Int)
+function get_panel_plot(df_mc::DataFrame, pop_size::Float64, n_paths::Int)
 
     f = Figure(
         size=(1000, 700)
@@ -28,25 +29,25 @@ function get_panel_plot(df_mc::DataFrame, n_paths::Int)
         lines!(
             axtop,
             data_path_i[!, :time],
-            data_path_i[!, :K_stock]
+            pop_size * data_path_i[!, :K_stock]
         )
         band!(
             axtop,
             data_path_i[!, :time],
             0.0,
-            data_path_i[!, :K_stock],
+            pop_size * data_path_i[!, :K_stock],
             alpha=0.3
         )
         lines!(
             axmidle,
             data_path_i[!, :time],
-            data_path_i[!, :opt_policy] .* data_path_i[!, :action]
+            pop_size * data_path_i[!, :opt_policy] .* data_path_i[!, :action]
         )
         band!(
             axmidle,
             data_path_i[!, :time],
             0.0,
-            data_path_i[!, :opt_policy] .* data_path_i[!, :action],
+            pop_size * data_path_i[!, :opt_policy] .* data_path_i[!, :action],
             alpha=0.2
         )
         lines!(
@@ -57,7 +58,7 @@ function get_panel_plot(df_mc::DataFrame, n_paths::Int)
         lines!(
             ax_right,
             data_path_i[!, :time],
-            data_path_i[!, :I_S]
+            pop_size * data_path_i[!, :I_S]
         )
         filename = "panel_0" * string(i) * ".png"
         save(filename, f)
