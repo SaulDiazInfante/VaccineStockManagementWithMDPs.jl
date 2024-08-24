@@ -34,7 +34,7 @@ ggplot_theme = Theme(
     )
 )
 
-with_theme(ggplot_theme) do
+with_theme(theme_latexfonts()) do
     f = get_confidence_bands(
         df_lower_q,
         df_median,
