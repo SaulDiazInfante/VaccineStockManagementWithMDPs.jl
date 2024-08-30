@@ -42,6 +42,6 @@ with_theme(theme_latexfonts()) do
         df_upper_q,
         df_mc,
         pop_size,
-        "./visualization/confidence_bands"
+        "./visualization/state_cbands"
     )
 end

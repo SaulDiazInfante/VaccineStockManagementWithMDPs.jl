@@ -25,6 +25,7 @@ using CairoMakie, StatsBase
     export get_simulation_statistics
 export get_panel_plot
 export get_confidence_bands
+export get_epidemic_states_confidence_bands
     include("functions.jl")
     include("load_parameters.jl")
     include("get_stencil_projection.jl")
@@ -41,4 +42,5 @@ export get_confidence_bands
     include("get_simulation_statistics.jl")
 include("get_panel_plot.jl")
 include("get_confidence_bands.jl")
+include("get_epidemic_states_confidence_bands.jl")
 end
