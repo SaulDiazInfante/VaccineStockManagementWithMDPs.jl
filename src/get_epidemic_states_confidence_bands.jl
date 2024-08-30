@@ -185,7 +185,7 @@ function get_epidemic_states_confidence_bands(
         ["median", "95% Conf."]
     )
 
-    l.orientation = :vertical
+    l.orientation = :horizontal
     filename = file_name * ".png"
     save(filename, f)
     f
