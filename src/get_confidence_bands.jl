@@ -2,7 +2,7 @@
 Returns a figure that encloses a panel visualization with 
 the confidence bands from quartiles 0.5 and .95 for the variables:
 vaccine stock, vaccination rate, and Symptomatic Infected.
-Also plots a counts for the optimal decision at the left, 
+Also plots a counts for the decision at the left, 
 and the Infecte class evulution on the right for a number of 
 n_paths realizations.
 

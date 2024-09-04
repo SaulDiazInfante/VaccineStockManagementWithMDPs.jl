@@ -1,4 +1,5 @@
 using CSV
+using MakiePublication
 using CairoMakie
 using DataFrames
 using Test
@@ -35,7 +36,7 @@ ggplot_theme = Theme(
     )
 )
 
-with_theme(theme_latexfonts()) do
+with_theme(theme_acs()) do
     f = get_epidemic_states_confidence_bands(
         df_lower_q,
         df_median,
