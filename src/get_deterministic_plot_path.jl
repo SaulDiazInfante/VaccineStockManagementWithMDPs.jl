@@ -6,7 +6,8 @@ dynamic model and the regarding policy.
 # Arguments
 - `df_mc::DataFrame`: DataFrame with the opt_Policy col from MonteCarlo Sampling 
 - `pop_size::Float64`:
-- `file_name::AbstractString`:
+- `file_name_f1::AbstractString`:
+- `file_name_f2::AbstractString`:
 """
 
 function get_deterministic_plot_path(
@@ -31,7 +32,6 @@ function get_deterministic_plot_path(
         f1[2, 1],
         ylabel=L"$\psi_V^{(k)}$ (Vaccination rate doses/day)"
     )
-
 
     ax_top_1_f2 = Axis(
         f2[1, 1],
@@ -119,7 +119,7 @@ function get_deterministic_plot_path(
     )
 
     lines!(
-        ax_bottom_2_f2,
+        ax_bottom_3_f2,
         df_ref[!, :time],
         pop_size * df_ref[!, :X_vac],
         color=color_ref
@@ -137,6 +137,5 @@ function get_deterministic_plot_path(
     filename_f2 = file_name_f2 * ".png"
     save(filename_f1, f1)
     save(filename_f2, f2)
-    f1
-    f2
+    return f1, f2
 end
