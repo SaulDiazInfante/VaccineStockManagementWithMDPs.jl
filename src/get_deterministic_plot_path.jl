@@ -133,8 +133,8 @@ function get_deterministic_plot_path(
 
     l.orientation = :horizontal
     =#
-    filename_f1 = file_name_f1 * ".png"
-    filename_f2 = file_name_f2 * ".png"
+    filename_f1 = file_name_f1
+    filename_f2 = file_name_f2
     save(filename_f1, f1)
     save(filename_f2, f2)
     return f1, f2
