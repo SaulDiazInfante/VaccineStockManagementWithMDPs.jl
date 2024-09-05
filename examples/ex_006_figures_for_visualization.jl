@@ -24,20 +24,42 @@ dark_latexfonts = merge(theme_dark(), theme_latexfonts())
 
 # with_theme(dark_latexfonts) do
 vis_path = "./visualization/"
-file_name_01 = "experiment_01_fig_01.png"
-file_name_02 = "experiment_01_fig_02.png"
-file_name_03 = "experiment_02_fig_01.png"
-file_name_04 = "experiment_03_fig_01.png"
-file_name_05 = "experiment_03_fig_02.png"
-
-
+file_name_01 = joinpath(vis_path, "experiment_01_fig_01.png")
+file_name_02 = joinpath(vis_path, "experiment_01_fig_02.png")
+file_name_03 = joinpath(vis_path, "experiment_02_fig_01")
+file_name_04 = joinpath(vis_path, "experiment_03_fig_01")
+file_name_05 = joinpath(vis_path, "experiment_03_fig_02.png")
 
 
 with_theme(theme_acs()) do
     f_01, f_02 = get_deterministic_plot_path(
         df_mc,
         pop_size,
-        joinpath(vis_path, file_name_01),
-        joinpath(vis_path, file_name_02),
+        file_name_01,
+        file_name_02
+    )
+
+    f_03 = get_panel_plot(
+        df_mc,
+        pop_size,
+        5,
+        file_name_03
+    )
+
+    f_04 = get_confidence_bands(
+        df_lower_q,
+        df_median,
+        df_upper_q,
+        df_mc,
+        pop_size,
+        file_name_04
+    )
+    f_05 = get_epidemic_states_confidence_bands(
+        df_lower_q,
+        df_median,
+        df_upper_q,
+        df_mc,
+        pop_size,
+        file_name_05
     )
 end

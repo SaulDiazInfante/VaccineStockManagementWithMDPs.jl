@@ -11,7 +11,12 @@ n_paths realizations.
 - `n_paths::Int`: Number of sampling paths to plot
 """
 
-function get_panel_plot(df_mc::DataFrame, pop_size::Float64, n_paths::Int)
+function get_panel_plot(
+    df_mc::DataFrame,
+    pop_size::Float64,
+    n_paths::Int,
+    file_name::AbstractString
+)
 
     f = Figure(
         size=(1000, 700)
@@ -60,7 +65,7 @@ function get_panel_plot(df_mc::DataFrame, pop_size::Float64, n_paths::Int)
             data_path_i[!, :time],
             pop_size * data_path_i[!, :I_S]
         )
-        filename = "panel_0" * string(i) * ".png"
+        filename = file_name * string(i) * ".png"
         save(filename, f)
     end
     return f
