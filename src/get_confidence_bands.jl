@@ -63,6 +63,7 @@ function get_confidence_bands(
         pop_size * df_ref[!, :K_stock],
         color=color_ref
     )
+    i = 1
     filename = file_name * "_0" * string(i) * ".png"
     save(filename, f)
 

@@ -65,7 +65,7 @@ function get_panel_plot(
             data_path_i[!, :time],
             pop_size * data_path_i[!, :I_S]
         )
-        filename = file_name * string(i) * ".png"
+        filename = file_name * "_0" * string(i) * ".png"
         save(filename, f)
     end
     return f
