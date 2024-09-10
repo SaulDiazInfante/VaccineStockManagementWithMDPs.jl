@@ -24,11 +24,19 @@ function get_confidence_bands(
     file_name::AbstractString
 )
 
+    mm_to_inc_factor = 1 / 25.4
+    golden_ratio = 1.618
+    size_mm = 190
+    size_inches = mm_to_inc_factor .* (size_mm, size_mm / golden_ratio)
+    size_pt_f = 72.0 .* size_inches
+
     f = Figure(
-        size=(1000, 700)
+        resolution=size_pt_f,
+        fontsize=12
     )
+
     # colors
-    color_q = (:azure, 1.0)
+    # color_q = (:azure, 1.0)
     color_m = (:orange, 0.4)
     color_ref = (:grey0, 1.0)
     axtop = Axis(
@@ -160,7 +168,7 @@ function get_confidence_bands(
         axright,
         df_upper_q[!, :time],
         pop_size * df_upper_q[!, :I_S],
-        color=color_ref
+        color=color_ref,
     )
 
     lines!(
@@ -175,21 +183,24 @@ function get_confidence_bands(
         df_lower_q[!, :time],
         pop_size * df_lower_q[!, :I_S],
         pop_size * df_upper_q[!, :I_S],
-        alpha=0.3
+        alpha=0.3,
+        label="CI 95%"
     )
 
     lines!(
         axright,
         df_ref[!, :time],
         pop_size * df_ref[!, :I_S],
-        color=color_ref
+        color=color_ref,
+        label="Reference"
     )
 
     lines!(
         axright,
         df_median[!, :time],
         pop_size * df_median[!, :I_S],
-        color=color_m
+        color=color_m,
+        label="median"
     )
     i = i + 1
     filename = file_name * "_0" * string(i) * ".png"
@@ -214,16 +225,25 @@ function get_confidence_bands(
         # color=[:red, :orange, :azure, :brown]
         color=[:red, :azure]
     )
-    l = Legend(
+    #= l = Legend(
         f[4, 1:2, Top()],
         [ref_line, med_line, band_],
         ["reference path", "median", "95% Conf."]
     )
 
     l.orientation = :horizontal
-
+    =#
     i = i + 1
+    axislegend(
+        axright,
+        merge=true,
+        unique=true,
+        position=:lt,
+        orientation=:vertical
+    )
     filename = file_name * "_0" * string(i) * ".png"
-    save(filename, f)
+    save(filename, f, px_per_unit=10)
+    filename = file_name * ".png"
+    save(filename, f, px_per_unit=10)
     return f
 end

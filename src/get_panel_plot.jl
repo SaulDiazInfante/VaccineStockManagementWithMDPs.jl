@@ -17,9 +17,14 @@ function get_panel_plot(
     n_paths::Int,
     file_name::AbstractString
 )
-
+    mm_to_inc_factor = 1 / 25.4
+    golden_ratio = 1.618
+    size_mm = 190
+    size_inches = mm_to_inc_factor .* (size_mm, size_mm / golden_ratio)
+    size_pt_f = 72.0 .* size_inches
     f = Figure(
-        size=(1000, 700)
+        resolution=size_pt_f,
+        fontsize=12
     )
 
     axtop = Axis(f[1, 1], ylabel="Stock")
@@ -66,7 +71,9 @@ function get_panel_plot(
             pop_size * data_path_i[!, :I_S]
         )
         filename = file_name * "_0" * string(i) * ".png"
-        save(filename, f)
+        save(filename, f, px_per_unit=10)
     end
+    filename = file_name * ".png"
+    save(filename, f, px_per_unit=10)
     return f
 end

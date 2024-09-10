@@ -1,6 +1,5 @@
 using Pkg
 Pkg.add("PkgTemplates")
-
 using PkgTemplates
 
 t = Template(;

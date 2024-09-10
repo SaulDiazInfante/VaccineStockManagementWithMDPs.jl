@@ -16,21 +16,29 @@ function get_deterministic_plot_path(
     file_name_f1::AbstractString,
     file_name_f2::AbstractString)
     #
+    mm_to_inc_factor = 1 / 25.4
+    golden_ratio = 1.618
+    size_mm = 180
+    size_inches = mm_to_inc_factor .* (size_mm, size_mm / golden_ratio)
+    size_pt_f1 = 72.0 .* size_inches
+
     f1 = Figure(
-        size=(680, 576)
+        resolution=size_pt_f1,
+        fontsize=12
     )
     # colors
     f2 = Figure(
-        size=(680, 576)
+        resolution=size_pt_f1,
+        fontsize=12
     )
     color_ref = (:grey0, 1.0)
     ax_top_1_f1 = Axis(
         f1[1, 1],
-        ylabel=L"$K_t$ (Number of doses)"
+        ylabel=L"$K_t$ (No. doses)"
     )
     ax_bottom_1_f1 = Axis(
         f1[2, 1],
-        ylabel=L"$\psi_V^{(k)}$ (Vaccination rate doses/day)"
+        ylabel=L"$\psi_V^{(k)}$ (doses/day)"
     )
 
     ax_top_1_f2 = Axis(
@@ -47,13 +55,19 @@ function get_deterministic_plot_path(
     )
 
     ax_bottom_1_f2 = Axis(
-        f2[2, 1], ylabel=L"I_A"
+        f2[2, 1],
+        ylabel=L"I_A",
+        xlabel="days"
     )
     ax_bottom_2_f2 = Axis(
-        f2[2, 2], ylabel=L"V"
+        f2[2, 2],
+        ylabel=L"V",
+        xlabel="days"
     )
     ax_bottom_3_f2 = Axis(
-        f2[2, 3], ylabel=L"Coverage $X_{VAC}$"
+        f2[2, 3],
+        ylabel=L"Coverage $X_{VAC}$",
+        xlabel="days"
     )
     #
     df_ref = filter(
@@ -136,6 +150,6 @@ function get_deterministic_plot_path(
     filename_f1 = file_name_f1
     filename_f2 = file_name_f2
     save(filename_f1, f1)
-    save(filename_f2, f2)
+    save(filename_f2, f2, px_per_unit=10)
     return f1, f2
 end

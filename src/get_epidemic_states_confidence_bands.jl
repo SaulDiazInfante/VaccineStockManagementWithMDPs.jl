@@ -20,12 +20,19 @@ function get_epidemic_states_confidence_bands(
     pop_size::Float64,
     file_name::AbstractString
 )
-    #
+    mm_to_inc_factor = 1 / 25.4
+    golden_ratio = 1.618
+    size_mm = 190
+    size_inches = mm_to_inc_factor .* (size_mm, size_mm / golden_ratio)
+    size_pt_f = 72.0 .* size_inches
+
     f = Figure(
-        size=(700, 1132)
+        resolution=size_pt_f,
+        fontsize=12
     )
+
     # colors
-    color_q = (:azure, 1.0)
+    # color_q = (:azure, 1.0)
     color_m = (:orange, 0.4)
     color_ref = (:grey0, 1.0)
     axtop = Axis(
@@ -69,19 +76,21 @@ function get_epidemic_states_confidence_bands(
         color=color_ref
     )
 
-    band_ = band!(
+    band!(
         axtop,
         df_lower_q[!, :time],
         pop_size * df_lower_q[!, :I_S],
         pop_size * df_upper_q[!, :I_S],
-        alpha=0.3
+        alpha=0.3,
+        label="CI 95%"
     )
 
-    med_line = lines!(
+    lines!(
         axtop,
         df_median[!, :time],
         pop_size * df_median[!, :I_S],
-        color=color_m
+        color=color_m,
+        label="median"
     )
 
     # Deaths
@@ -179,14 +188,14 @@ function get_epidemic_states_confidence_bands(
         color=color_m
     )
 
-    l = Legend(
-        f[5, 1, Top()],
-        [med_line, band_],
-        ["median", "95% Conf."]
+    axislegend(
+        axtop,
+        merge=true,
+        unique=true,
+        position=:lt,
+        orientation=:horizontal
     )
-
-    l.orientation = :horizontal
-    filename = file_name * ".png"
+    filename = file_name
     save(filename, f)
     f
 end
