@@ -21,6 +21,8 @@ function get_deterministic_plot_path(
     size_mm = 180
     size_inches = mm_to_inc_factor .* (size_mm, size_mm / golden_ratio)
     size_pt_f1 = 72.0 .* size_inches
+    font_size = 18
+    hv_offset = (4, -1)
 
     f1 = Figure(
         resolution=size_pt_f1,
@@ -38,7 +40,8 @@ function get_deterministic_plot_path(
     )
     ax_bottom_1_f1 = Axis(
         f1[2, 1],
-        ylabel=L"$\psi_V^{(k)}$ (doses/day)"
+        ylabel=L"$\psi_V^{(k)}$ (doses/day)",
+        xlabel="time (day)"
     )
 
     ax_top_1_f2 = Axis(
@@ -57,18 +60,46 @@ function get_deterministic_plot_path(
     ax_bottom_1_f2 = Axis(
         f2[2, 1],
         ylabel=L"I_A",
-        xlabel="days"
+        xlabel="time (day)"
     )
     ax_bottom_2_f2 = Axis(
         f2[2, 2],
         ylabel=L"V",
-        xlabel="days"
+        xlabel="time (day)"
     )
     ax_bottom_3_f2 = Axis(
         f2[2, 3],
         ylabel=L"Coverage $X_{VAC}$",
-        xlabel="days"
+        xlabel="time (day)"
     )
+
+    axs = [
+        ax_top_1_f1,
+        ax_bottom_1_f1,
+        ax_top_1_f2,
+        ax_top_2_f2,
+        ax_top_3_f2,
+        ax_bottom_1_f2,
+        ax_bottom_2_f2,
+        ax_bottom_3_f2
+    ]
+    labels = ["(A)", "(B)", "(A)", "(B)", "(C)", "(D)", "(E)", "(F)"]
+    font_size = 18
+    hv_offset = (4, -1)
+
+    for (ax, label) in zip(axs, labels)
+        text!(
+            ax,
+            0, 1,
+            text=label,
+            font=:bold,
+            align=(:left, :top),
+            offset=hv_offset,
+            space=:relative,
+            fontsize=font_size
+        )
+    end
+
     #
     df_ref = filter(
         :idx_path => n -> n == 1,

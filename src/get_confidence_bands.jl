@@ -58,6 +58,25 @@ function get_confidence_bands(
         xlabel="time (days)",
         ylabel=L"I_S"
     )
+
+    axs = [axtop, axmidle, axbottom, axright]
+    labels = ["(A)", "(B)", "(C)", "(D)"]
+    font_size = 18
+    hv_offset = (4, -1)
+
+    for (ax, label) in zip(axs, labels)
+        text!(
+            ax,
+            0, 1,
+            text=label,
+            font=:bold,
+            align=(:left, :top),
+            offset=hv_offset,
+            space=:relative,
+            fontsize=font_size
+        )
+    end
+
     #
     df_ref = filter(
         :idx_path => n -> n == 1,
@@ -169,6 +188,7 @@ function get_confidence_bands(
         df_upper_q[!, :time],
         pop_size * df_upper_q[!, :I_S],
         color=color_ref,
+        label="Reference"
     )
 
     lines!(
@@ -191,8 +211,7 @@ function get_confidence_bands(
         axright,
         df_ref[!, :time],
         pop_size * df_ref[!, :I_S],
-        color=color_ref,
-        label="Reference"
+        color=color_ref
     )
 
     lines!(
@@ -238,8 +257,10 @@ function get_confidence_bands(
         axright,
         merge=true,
         unique=true,
-        position=:lt,
-        orientation=:vertical
+        position=:rb,
+        nbanks=2,
+        rowgap=10,
+        orientation=:horizontal
     )
     filename = file_name * "_0" * string(i) * ".png"
     save(filename, f, px_per_unit=10)

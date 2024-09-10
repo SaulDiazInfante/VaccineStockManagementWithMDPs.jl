@@ -60,6 +60,24 @@ function get_epidemic_states_confidence_bands(
     hidexdecorations!(axtop, grid=false)
     hidexdecorations!(axmidle_0, grid=false)
     hidexdecorations!(axmidle_1, grid=false)
+    axs = [axtop, axmidle_0, axmidle_1, axbottom]
+    labels = ["(A)", "(B)", "(C)", "(D)"]
+    font_size = 18
+    hv_offset = (4, -1)
+
+    for (ax, label) in zip(axs, labels)
+        text!(
+            ax,
+            0, 1,
+            text=label,
+            font=:bold,
+            align=(:left, :top),
+            offset=hv_offset,
+            space=:relative,
+            fontsize=font_size
+        )
+    end
+
     # Symptomatics
 
     lines!(
@@ -192,7 +210,7 @@ function get_epidemic_states_confidence_bands(
         axtop,
         merge=true,
         unique=true,
-        position=:lt,
+        position=:rb,
         orientation=:horizontal
     )
     filename = file_name

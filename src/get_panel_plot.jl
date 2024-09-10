@@ -31,6 +31,24 @@ function get_panel_plot(
     axmidle = Axis(f[2, 1], ylabel="Vaccination rate")
     axbottom = Axis(f[3, 1], xlabel="time", ylabel="Decision")
     ax_right = Axis(f[:, 2], xlabel="time", ylabel=L"I_S")
+    axs = [axtop, axmidle, axbottom, ax_right]
+    labels = ["(A)", "(B)", "(C)", "(D)"]
+    font_size = 18
+    hv_offset = (4, -1)
+
+    for (ax, label) in zip(axs, labels)
+        text!(
+            ax,
+            0, 1,
+            text=label,
+            font=:bold,
+            align=(:left, :top),
+            offset=hv_offset,
+            space=:relative,
+            fontsize=font_size
+        )
+    end
+
     for i in 1:n_paths
         data_path_i = filter(
             :idx_path => n -> n == i,
