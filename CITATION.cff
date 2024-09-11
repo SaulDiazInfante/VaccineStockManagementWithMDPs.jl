@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+title: VaccineStockManagementWithMDPs.jl
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Saul
+    name-particle: SDIV
+    family-names: Diaz-Infante Velasco
+    email: saul.diazinfante@unison.mx
+    affiliation: CONAHCYT-Universidad de Sonora
+    orcid: 'https://orcid.org/0000-0001-9559-1293'
+  - given-names: Yofre Hernan
+    name-particle: YHGG
+    family-names: García Gómez
+    name-suffix: Yofre
+    email: yofre.garcia@unach.mx
+    affiliation: Universidad Autónoma de Chiapas
+    orcid: 'https://orcid.org/0000-0003-0243-1392'
+repository-code: >-
+  https://github.com/SaulDiazInfante/VaccineStockManagementWithMDPs.jl.git
+url: >-
+  https://github.com/SaulDiazInfante/VaccineStockManagementWithMDPs.jl.git
+abstract: >-
+  Julia's source code for the publications. From Markov
+  Decision Processes to a RL Model for the
+
+  stock management of vaccines.
+keywords:
+  - Juila
+  - uncertinity quantification
+  - Markov decissision process
+  - simulation
+  - NFDS
+license: MIT
+version: ' 448f5be'
