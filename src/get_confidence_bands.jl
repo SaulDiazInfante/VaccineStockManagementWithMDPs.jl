@@ -45,7 +45,7 @@ function get_confidence_bands(
     )
     axmidle = Axis(
         f[2, 1],
-        xlabel="time (days)",
+        xlabel="time (day)",
         ylabel="Vaccination rate"
     )
     axbottom = Axis(
@@ -55,7 +55,7 @@ function get_confidence_bands(
     )
     axright = Axis(
         f[1:3, 2],
-        xlabel="time (days)",
+        xlabel="time (day)",
         ylabel=L"I_S"
     )
 
