@@ -30,7 +30,7 @@ file_name_03 = joinpath(vis_path, "experiment_02_fig_01")
 file_name_04 = joinpath(vis_path, "experiment_03_fig_01")
 file_name_05 = joinpath(vis_path, "experiment_03_fig_02.png")
 
-with_theme(theme_acs()) do
+with_theme(theme_aps()) do
     f_01, f_02 = get_deterministic_plot_path(
         df_mc,
         pop_size,
