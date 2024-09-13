@@ -29,8 +29,8 @@ function get_panel_plot(
 
     axtop = Axis(f[1, 1], ylabel="Stock")
     axmidle = Axis(f[2, 1], ylabel="Vaccination rate")
-    axbottom = Axis(f[3, 1], xlabel="time", ylabel="Decision")
-    ax_right = Axis(f[:, 2], xlabel="time", ylabel=L"I_S")
+    axbottom = Axis(f[3, 1], xlabel="time (day)", ylabel="Decision")
+    ax_right = Axis(f[:, 2], xlabel="time (day)", ylabel=L"I_S")
     axs = [axtop, axmidle, axbottom, ax_right]
     labels = ["(A)", "(B)", "(C)", "(D)"]
     font_size = 18

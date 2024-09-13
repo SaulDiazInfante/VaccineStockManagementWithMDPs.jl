@@ -49,7 +49,7 @@ function get_epidemic_states_confidence_bands(
     )
     axbottom = Axis(
         f[4, 1],
-        xlabel="time (days)",
+        xlabel="time (day)",
         ylabel=L"X_{VAC}"
     )
     #
